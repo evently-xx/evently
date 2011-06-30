@@ -20,6 +20,9 @@ class Event(models.Model):
   title = models.CharField(max_length=1024)
   description = models.TextField()
 
+  class Admin:
+    pass
+
 
 class Meetup(models.Model):
   '''
@@ -29,3 +32,6 @@ class Meetup(models.Model):
 
   eventId = models.IntegerField()
   userIds = models.TextField() # better field type ?
+
+  class Admin:
+    pass
