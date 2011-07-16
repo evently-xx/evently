@@ -63,5 +63,8 @@ if __name__ == '__main__':
     dc = UpcomingCrawler()
     dc.set_api_key('6b6117dc75')
     dc.set_api_method('event.search')
-    dc.event_search('san francisco, ca')
+    events = dc.event_search('san francisco, ca')
+    for event in events:
+        print event
+
     #dc.daily_event_search('san francisco, ca')
