@@ -8,6 +8,7 @@ __author__ = 'dzhou'
 
 
 from django.db import models
+from django.contrib.auth.models import User
 
 class Event(models.Model):
   '''
@@ -63,6 +64,29 @@ class Event(models.Model):
 
   class Admin:
     pass
+
+
+class UserProfile(models.Model):
+
+  # one row in userprofile table corresponds to one user
+  user = models.OneToOneField(User)
+
+  # additional information
+  facebookId = models.IntegerField(null=True)
+
+
+class Invitation(models.Model):
+  user_id = models.IntegerField(db_index=True)
+  event_id = models.IntegerField(db_index=True)
+  text = models.TextField(blank=True, null=True)
+  invitee_id = models.IntegerField(blank=True, db_index=True)
+  accepted = models.BooleanField()
+  date = models.DateField(auto_now=True, db_index=True)
+
+
+class Friendship(models.Model):
+  user_a = models.IntegerField(db_index=True)
+  user_b = models.IntegerField(db_index=True)
 
 
 class Meetup(models.Model):
