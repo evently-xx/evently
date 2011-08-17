@@ -59,3 +59,7 @@ def parse_int(value):
   if value == None or value == '':
     return None
   return int(value)
+
+def parse_yelp_category_text(value):
+  'TODO(xingjie): Need to convert category text to id'
+  return value

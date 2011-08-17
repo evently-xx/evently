@@ -1,7 +1,12 @@
 '''
 data abstraction
+  - Event table stores the crawled data from yahoo.com
+  - Meetup table stores the personal meetup information,
+    TODO: Finish up this table schema!
+  - YelpEvent table stores the crawled data from yelp.com
 
 @author dzhou
+@author xliu
 '''
 
 __author__ = 'dzhou'
@@ -36,7 +41,7 @@ class Event(models.Model):
   name = models.CharField(max_length=1024)
   numFutureEvents = models.IntegerField(blank=True, db_index=True)
   personal = models.IntegerField(blank=True, db_index=True)
-  photoURL = models.URLField(blank=True, verify_exists=False)
+  phMotoURL = models.URLField(blank=True, verify_exists=False)
   selfPromotion = models.IntegerField(blank=True)
   startDate = models.DateField(null=True, blank=True, db_index=True)
   startDateLastRendition = models.CharField(blank=True, max_length=512)
@@ -76,3 +81,37 @@ class Meetup(models.Model):
 
   class Admin:
     pass
+
+class YelpEventURL(models.Model):
+  '''
+  A table to store crawled event URLs from event browse pages, waiting for the
+  crawler to visit these event pages one by one.
+  '''
+  eventURL = models.URLField(blank=True, primary_key=True)
+  crawledTime = models.DateTimeField(null=True, blank = True, db_index=True)
+
+  class Admin:
+    pass
+
+class YelpEvent(models.Model):
+  '''
+  a table to store yelp event
+  '''
+  eventURL = models.URLField(blank=True, primary_key=True)
+  photoURL = models.URLField(blank=True, verify_exists=False)
+  description = models.TextField(blank=True)
+  utcEnd = models.DateTimeField(null=True, blank=True, db_index=True)
+  utcStart = models.DateTimeField(null=True, blank=True, db_index=True)
+  venueName = models.CharField(blank=True, max_length=1024)
+  venueAddr = models.TextField(blank=True)
+  venueCity = models.CharField(blank=True, db_index=True, max_length=256)
+  venueStateName = models.CharField(blank=True, max_length=1024)
+  venueZip = models.CharField(blank=True, db_index=True, max_length=32)
+  cost = models.CharField(blank=True, db_index=True, max_length=32)
+  watchListCount = models.IntegerField(null=True, blank=True, db_index=True)
+  
+  crawledTime = models.DateTimeField(null=True, blank = True, db_index=True)
+  
+  class Admin:
+    pass
+
