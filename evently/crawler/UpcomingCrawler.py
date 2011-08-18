@@ -17,6 +17,17 @@ from core.models import Event, Meetup
 
 from crawler_utils import *
 
+def encode(event):
+  encodedFields = set(['description'])
+
+  for k, v in event.iteritems():
+    if k in encodedFields:
+      # escape the encoding error
+      s = v.encode(errors='ignore')
+      event[k] = unicode(s)
+
+  return event
+
 
 def save_event_to_db(event):
   '''
@@ -126,7 +137,7 @@ if __name__ == '__main__':
   dc.set_api_method('event.search')
   events = dc.event_search('san francisco, ca')
   for event in events:
-    print event
+    event = encode(event)
     save_event_to_db(event)
     #break
 
