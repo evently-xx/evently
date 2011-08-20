@@ -38,8 +38,6 @@ def preview_event_list(request):
     if maxEventNum <= 0:
       break
 
-    print obj
-
     eList.append(obj.eventID)
 
   # get template
