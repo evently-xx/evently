@@ -8,6 +8,9 @@ urlpatterns = patterns('',
     # Example:
     # (r'^evently/', include('evently.foo.urls')),
 
+    # preview objects
+    (r'^preview/event/(?P<event_id>\d+)$', 'core.views.preview_event'),
+
     # Uncomment the admin/doc line below to enable admin documentation:
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

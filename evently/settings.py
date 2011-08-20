@@ -1,5 +1,8 @@
 # Django settings for evently project.
 
+import os
+CURRENT_PATH = os.getcwd()
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -77,11 +80,11 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'evently.urls'
 
+
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+  os.path.join(CURRENT_PATH, 'templates'),
 )
+
 
 AUTH_PROFILE_MODULE = 'core.UserProfile'
 
