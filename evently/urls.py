@@ -8,7 +8,10 @@ urlpatterns = patterns('',
     # Example:
     # (r'^evently/', include('evently.foo.urls')),
 
-    # preview objects
+    # get list of objects
+    (r'^preview/event/$', 'core.views.preview_event_list'),
+
+    # preview an object
     (r'^preview/event/(?P<event_id>\d+)$', 'core.views.preview_event'),
 
     # Uncomment the admin/doc line below to enable admin documentation:

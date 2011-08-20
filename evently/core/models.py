@@ -15,6 +15,7 @@ __author__ = 'dzhou'
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Event(models.Model):
   '''
   an event is the occasion, the idea, and the reasons for someone to
@@ -42,7 +43,7 @@ class Event(models.Model):
   name = models.CharField(max_length=1024)
   numFutureEvents = models.IntegerField(blank=True, db_index=True)
   personal = models.IntegerField(blank=True, db_index=True)
-  phMotoURL = models.URLField(blank=True, verify_exists=False)
+  photoURL = models.URLField(blank=True, verify_exists=False)
   selfPromotion = models.IntegerField(blank=True)
   startDate = models.DateField(null=True, blank=True, db_index=True)
   startDateLastRendition = models.CharField(blank=True, max_length=512)
@@ -69,6 +70,9 @@ class Event(models.Model):
 
   class Admin:
     pass
+
+  def __str__(self):
+    return str(self.__dict__)
 
 
 class UserProfile(models.Model):
@@ -133,9 +137,9 @@ class YelpEvent(models.Model):
   venueZip = models.CharField(blank=True, db_index=True, max_length=32)
   cost = models.CharField(blank=True, db_index=True, max_length=32)
   watchListCount = models.IntegerField(null=True, blank=True, db_index=True)
-  
+
   crawledTime = models.DateTimeField(null=True, blank = True, db_index=True)
-  
+
   class Admin:
     pass
 

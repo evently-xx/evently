@@ -1,0 +1,8 @@
+
+<!- display a list of event ids below -->
+
+Event ids below:
+
+{% for eid in event_list %}
+  <li> <a href={{ eid }} title="{{ eid }}"> {{ eid }} </a> </li>
+{% endfor %}
