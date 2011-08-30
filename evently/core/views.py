@@ -1,11 +1,16 @@
 # Create your views here.
 
 from django.template import Context
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template.loader import get_template
 from django.http import Http404
+from django.shortcuts import render_to_response
 
 from core.models import Event
+
+import time
+from datetime import date, datetime, timedelta
+import calendar
 
 def preview_event(request, event_id):
 
@@ -53,3 +58,49 @@ def preview_event_list(request):
 
   return HttpResponse(html)
 
+
+
+###########################
+# preview calendar
+###
+
+mnames = "January February March April May June July August September October November December"
+mnames = mnames.split()
+
+def preview_calendar(request, year, month, change=None):
+  """Listing of days in `month`."""
+  year, month = int(year), int(month)
+
+  # apply next / previous change
+  if change in ("next", "prev"):
+    now, mdelta = date(year, month, 15), timedelta(days=31)
+    if change == "next":
+      mod = mdelta
+    elif change == "prev":
+      mod = -mdelta
+
+    year, month = (now+mod).timetuple()[:2]
+
+  # init variables
+  cal = calendar.Calendar()
+  month_days = cal.itermonthdays(year, month)
+  nyear, nmonth, nday = time.localtime()[:3]
+  lst = [[]]
+  week = 0
+
+  # make month lists containing list of days for each week
+  # each day tuple will contain list of entries and 'current' indicator
+  for day in month_days:
+    entries = current = False   # are there entries for this day; current day?
+    if day:
+      #entries = Entry.objects.filter(date__year=year, date__month=month, date__day=day)
+      entries = Event.objects.filter(eventID__exact=-100)
+      if day == nday and year == nyear and month == nmonth:
+        current = True
+
+    lst[week].append((day, entries, current))
+    if len(lst[week]) == 7:
+      lst.append([])
+      week += 1
+
+  return render_to_response("core/preview_calendar.html", dict(year=year, month=month, user=None, month_days=lst, mname=mnames[month-1]))

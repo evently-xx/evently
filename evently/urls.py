@@ -14,6 +14,9 @@ urlpatterns = patterns('',
     # preview an object
     (r'^preview/event/(?P<event_id>\d+)$', 'core.views.preview_event'),
 
+    # preview a calendar
+    (r'^preview/calendar/(?P<year>\d+)-(?P<month>\d+)$', 'core.views.preview_calendar'),
+
     # Uncomment the admin/doc line below to enable admin documentation:
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
