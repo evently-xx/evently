@@ -1,3 +1,6 @@
+<a href= "{% url core.views.preview_calendar year month "prev" %}">&lt;&lt; Prev</a>
+<a href= "{% url core.views.preview_calendar year month "next" %}">Next &gt;&gt;</a>
+
 <h4>{{ mname }} {{ year }}</h4>
 
 <div class="month">
@@ -31,7 +34,7 @@
                 {{ day }}
                 {% for entry in entries %}
                     <br />
-                    <b>{{ entry.creator }}</b>: {{ entry.short|safe }}
+                    <b>{{ entry.eventID }}</b>: {{ entry.description|safe }}
                 {% endfor %}
             {% endif %}
             </td>
