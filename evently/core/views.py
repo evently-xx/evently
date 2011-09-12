@@ -106,3 +106,16 @@ def preview_calendar(request, year, month, change=None):
       week += 1
 
   return render_to_response("core/preview_calendar.html", dict(year=year, month=month, user=None, month_days=lst, mname=mnames[month-1]))
+
+
+def preview_calendar_day(request, year, month, day):
+  """Listing of events in 'day'."""
+
+  year, month, day = int(year), int(month), int(day)
+
+  entries = Event.objects.filter(datePosted__year=year, datePosted__month=month, datePosted__day=day)
+
+  print len(entries)
+
+  return render_to_response("core/preview_calendar_day.html", dict(year=year, month=month, day=day, user=None, mname=mnames[month-1], event_list=entries))
+
