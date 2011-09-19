@@ -62,7 +62,10 @@ SITE_URL = 'http://173.255.252.91:1090/'
 STATIC_URL = '/static/'
 
 
-STATIC_ROOT = '~%s/evently_media_%s/' % (CURRENT_USER, CURRENT_USER)
+# temp static file location
+STATIC_ROOT = os.path.abspath(
+  '/tmp/staticfiles_%s/' % (CURRENT_USER)
+  )
 
 # mkdir if not exists
 if not os.path.exists(STATIC_ROOT):
