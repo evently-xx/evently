@@ -20,8 +20,6 @@ def profile(request):
     {}
     )
 
-  print c
-
   html = tmpl.render(c)
 
   return HttpResponse(html)
