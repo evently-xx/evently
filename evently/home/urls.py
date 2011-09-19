@@ -4,9 +4,7 @@ from django.conf.urls.defaults import *
 from django.contrib import admin
 admin.autodiscover()
 
-print "hello world"
-
 urlpatterns = patterns(
   'home.views',
-  (r'^$', 'foo'),
+  (r'^$', 'profile'),
 )

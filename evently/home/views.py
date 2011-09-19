@@ -6,13 +6,18 @@ from django.template.loader import get_template
 from django.http import Http404
 from django.shortcuts import render_to_response
 
+import settings
+import sys
+import os
 
-def foo(request):
+def profile(request):
 
-  tmpl = get_template('home/dzhou.html')
+  tmpl = get_template('home/profile.html')
 
   context = Context(
-    {}
+    {"STATIC_URL" : os.path.join(settings.SITE_URL,
+                                 settings.STATIC_URL)}
+
     )
 
   html = tmpl.render(context)
