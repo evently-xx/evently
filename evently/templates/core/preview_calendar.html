@@ -1,3 +1,6 @@
+<a href= "{% url core.views.preview_calendar year month "prev" %}">&lt;&lt; Prev</a>
+<a href= "{% url core.views.preview_calendar year month "next" %}">Next &gt;&gt;</a>
+
 <h4>{{ mname }} {{ year }}</h4>
 
 <div class="month">
@@ -22,6 +25,7 @@
             {% if day != 0 and not current %}"day"{% endif %}
             {% if day != 0 and current %}"current"{% endif %}
             {% if day != 0 %}
+                onClick="parent.location='{% url core.views.preview_calendar_day year month day %}'"
                 onMouseOver="this.bgColor='#eeeeee';"
                 onMouseOut="this.bgColor='white';"
             {% endif %} >
@@ -31,7 +35,7 @@
                 {{ day }}
                 {% for entry in entries %}
                     <br />
-                    <b>{{ entry.creator }}</b>: {{ entry.short|safe }}
+                    <b>{{ entry.eventID }}</b>: {{ entry.description|safe }}
                 {% endfor %}
             {% endif %}
             </td>

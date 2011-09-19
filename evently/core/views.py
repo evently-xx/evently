@@ -71,12 +71,14 @@ def preview_calendar(request, year, month, change=None):
   """Listing of days in `month`."""
   year, month = int(year), int(month)
 
+  print year, month, change
+
   # apply next / previous change
-  if change in ("next", "prev"):
+  if change in ('next', 'prev'):
     now, mdelta = date(year, month, 15), timedelta(days=31)
-    if change == "next":
+    if change == 'next':
       mod = mdelta
-    elif change == "prev":
+    elif change == 'prev':
       mod = -mdelta
 
     year, month = (now+mod).timetuple()[:2]
@@ -94,7 +96,7 @@ def preview_calendar(request, year, month, change=None):
     entries = current = False   # are there entries for this day; current day?
     if day:
       #entries = Entry.objects.filter(date__year=year, date__month=month, date__day=day)
-      entries = Event.objects.filter(eventID__exact=-100)
+      entries = Event.objects.filter(datePosted__year=year, datePosted__month=month, datePosted__day=day, eventID__exact=-111)
       if day == nday and year == nyear and month == nmonth:
         current = True
 
@@ -104,3 +106,16 @@ def preview_calendar(request, year, month, change=None):
       week += 1
 
   return render_to_response("core/preview_calendar.html", dict(year=year, month=month, user=None, month_days=lst, mname=mnames[month-1]))
+
+
+def preview_calendar_day(request, year, month, day):
+  """Listing of events in 'day'."""
+
+  year, month, day = int(year), int(month), int(day)
+
+  entries = Event.objects.filter(datePosted__year=year, datePosted__month=month, datePosted__day=day)
+
+  print len(entries)
+
+  return render_to_response("core/preview_calendar_day.html", dict(year=year, month=month, day=day, user=None, mname=mnames[month-1], event_list=entries))
+
