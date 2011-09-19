@@ -92,6 +92,10 @@ body {
   width: 14%;
 }
 
+.userCalendar .calMonthView td:hover {
+  background-color: #ebebeb;
+}
+
 .evently .pageContent .rightColumn {
   width: 220px;
 }
