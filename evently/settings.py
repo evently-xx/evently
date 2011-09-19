@@ -58,14 +58,17 @@ MEDIA_URL = '/media/'
 
 SITE_URL = 'http://173.255.252.91:1090/'
 
-STATIC_URL = 'static_media/'
+STATIC_URL = '/static/'
 
 STATIC_ROOT = '/evently_media/'
+
+STATICFILES_DIRS = (
+)
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/'
+ADMIN_MEDIA_PREFIX = STATIC_URL + "admin/"
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'c7^c-$!mn45vj0cq@76w2#)t^47@ab#27(hq3k^sat3-zybhri'
@@ -76,6 +79,16 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
 )
+
+TEMPLATE_CONTEXT_PROCESSORS = {
+  'django.core.context_processors.auth',
+  'django.core.context_processors.debug',
+  'django.core.context_processors.i18n',
+  'django.core.context_processors.media',
+  'django.core.context_processors.static',
+  # add this to make static files work
+#  'staticfiles.context_processors.static_url',
+}
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -105,6 +118,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
+    'django.contrib.staticfiles',
     'core',
     'home',
 )

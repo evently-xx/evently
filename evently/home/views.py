@@ -5,6 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template.loader import get_template
 from django.http import Http404
 from django.shortcuts import render_to_response
+from django.template import RequestContext
 
 import settings
 import sys
@@ -14,12 +15,13 @@ def profile(request):
 
   tmpl = get_template('home/profile.html')
 
-  context = Context(
-    {"STATIC_URL" : os.path.join(settings.SITE_URL,
-                                 settings.STATIC_URL)}
-
+  c = RequestContext(
+    request,
+    {}
     )
 
-  html = tmpl.render(context)
+  print c
+
+  html = tmpl.render(c)
 
   return HttpResponse(html)
