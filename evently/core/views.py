@@ -1,10 +1,11 @@
 # Create your views here.
 
-from django.template import Context
+from django.template import Context, RequestContext
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template.loader import get_template
 from django.http import Http404
 from django.shortcuts import render_to_response
+from django.contrib.comments.views.comments import post_comment
 
 from core.models import Event
 
@@ -14,8 +15,6 @@ import calendar
 
 def preview_event(request, event_id):
 
-  tmpl = get_template('core/preview_event.html')
-
   events = Event.objects.filter(eventID = event_id)
   if not len(events):
     raise Http404
@@ -23,13 +22,11 @@ def preview_event(request, event_id):
   event = events[0]
 
   # fill in all fields of an event
-  context = Context(
-    {'event' : event}
+  context = RequestContext(
+    request, {'event' : event}
     )
 
-  html = tmpl.render(context)
-
-  return HttpResponse(html)
+  return render_to_response("core/preview_event.html", context)
 
 
 def preview_event_list(request):
