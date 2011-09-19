@@ -2,6 +2,7 @@
 
 import os
 CURRENT_PATH = os.getcwd()
+CURRENT_USER = os.getlogin()
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -60,7 +61,12 @@ SITE_URL = 'http://173.255.252.91:1090/'
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/evently_media/'
+
+STATIC_ROOT = '~%s/evently_media_%s/' % (CURRENT_USER, CURRENT_USER)
+
+# mkdir if not exists
+if not os.path.exists(STATIC_ROOT):
+  os.makedirs(STATIC_ROOT)
 
 STATICFILES_DIRS = (
 )
