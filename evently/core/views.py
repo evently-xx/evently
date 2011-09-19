@@ -105,7 +105,7 @@ def preview_calendar(request, year, month, change=None):
       lst.append([])
       week += 1
 
-  return render_to_response("core/preview_calendar.html", dict(year=year, month=month, user=None, month_days=lst, mname=mnames[month-1]))
+  return render_to_response("core/preview_profile.html", dict(year=year, month=month, user=None, month_days=lst, mname=mnames[month-1]))
 
 
 def preview_calendar_day(request, year, month, day):
