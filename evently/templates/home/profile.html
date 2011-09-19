@@ -18,60 +18,9 @@
       <table class="pageContent">
         <tr>
           <td class="mainColumn">
-            <div id="profileInfo">
-              PH:Profile
-            </div>
+            <div id="profileInfo"> PH:Profile </div>
             <div id="invitations"> PH:Invitations </div>
-            <div id="userCalendar">
-              <a href= "{% url core.views.preview_calendar year month "prev" %}">&lt;&lt; Prev</a>
-              <a href= "{% url core.views.preview_calendar year month "next" %}">Next &gt;&gt;</a>
-
-              <h4>{{ mname }} {{ year }}</h4>
-
-              <div class="month">
-                <table>
-
-                  <tr>
-                    <td class="empty">Mon</td>
-                    <td class="empty">Tue</td>
-                    <td class="empty">Wed</td>
-                    <td class="empty">Thu</td>
-                    <td class="empty">Fri</td>
-                    <td class="empty">Sat</td>
-                    <td class="empty">Sun</td>
-                  </tr>
-
-                  {% for week in month_days %}
-                    <tr>
-                    {% for day, entries, current in week %}
-                    <!-- TD style: empty | day | current; onClick handler and highlight  -->
-                      <td class= {% if day == 0 %}"empty"{% endif %}
-                        {% if day != 0 and not current %}"day"{% endif %}
-                        {% if day != 0 and current %}"current"{% endif %}
-                        {% if day != 0 %}
-                        onClick="parent.location='{% url core.views.preview_calendar_day year month day %}'"
-                        onMouseOver="this.bgColor='#eeeeee';"
-                        onMouseOut="this.bgColor='white';"
-                     {% endif %} >
-
-                     <!-- Day number and entry snippets -->
-                    {% if day != 0 %}
-                        {{ day }}
-                       {% for entry in entries %}
-                        <br />
-                        <b>{{ entry.eventID }}</b>: {{ entry.description|safe }}
-                    {% endfor %}
-                {% endif %}
-                </td>
-            {% endfor %}
-            </tr>
-        {% endfor %}
-        </table>
-
-        <div class="clear"></div>
-        </div>
-
-            </div>
+            <div id="userCalendar"> PH:Calendar </div>
           </td>
           <td class="rightColumn">
             Recommendations
