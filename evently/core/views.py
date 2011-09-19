@@ -12,6 +12,10 @@ import time
 from datetime import date, datetime, timedelta
 import calendar
 
+import settings
+import os
+
+
 def preview_event(request, event_id):
 
   tmpl = get_template('core/preview_event.html')
@@ -105,7 +109,14 @@ def preview_calendar(request, year, month, change=None):
       lst.append([])
       week += 1
 
-  return render_to_response("core/preview_profile.html", dict(year=year, month=month, user=None, month_days=lst, mname=mnames[month-1]))
+  return render_to_response("core/preview_profile.html",
+                            dict(year=year,
+                                 month=month,
+                                 user=None,
+                                 month_days=lst,
+                                 mname=mnames[month-1],
+                                 static_url=os.path.join(settings.SITE_URL,
+                                                         settings.STATIC_URL)))
 
 
 def preview_calendar_day(request, year, month, day):
