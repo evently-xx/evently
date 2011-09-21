@@ -5,6 +5,6 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns(
-  'home.views',
-  (r'^$', 'profile'),
+  'home.views',        # the library to load functions 
+  (r'^$', 'profile'),  # the function to import
 )
