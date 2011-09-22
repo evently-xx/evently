@@ -33,6 +33,12 @@ urlpatterns = patterns('',
     # home page
     (r'^profile/', include('home.urls')),
 
+    # calendar
+    (r'^calendar/', include('ecal.urls')),
+    #(r'^calendar/(?P<year>\d+)-(?P<month>\d+)/(?P<change>prev|next)/$',
+    #                 include('ecal.urls')),
+    #(r'^calendar/(?P<year>\d+)-(?P<month>\d+)$', include('ecal.urls')),
+
     # serve static files
 #    (r'^%s(.*)$' % settings.STATIC_URL, 'django.views.static.serve',
 #       {'document_root': settings.STATIC_ROOT,
