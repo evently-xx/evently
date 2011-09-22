@@ -5,7 +5,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template.loader import get_template
 from django.http import Http404
 from django.shortcuts import render_to_response
-from django.contrib.comments.views.comments import post_comment
+
+import sys
 
 from core.models import Event
 
@@ -17,62 +18,22 @@ import settings
 import os
 
 
-def preview_event(request, event_id):
-
-  events = Event.objects.filter(eventID = event_id)
-  if not len(events):
-    raise Http404
-
-  event = events[0]
-
-  # fill in all fields of an event
-  context = RequestContext(
-    request, {'event' : event}
-    )
-
-  return render_to_response("core/preview_event.html", context)
-
-
-def preview_event_list(request):
-
-  # get event ids
-  maxEventNum = 100
-  objs = Event.objects.all()
-  eList = []
-  for obj in objs:
-    maxEventNum -= 1
-    if maxEventNum <= 0:
-      break
-
-    eList.append(obj.eventID)
-
-  # get template
-  tmpl = get_template('core/preview_event_list.html')
-
-
-  # fill in event list context
-  context = Context(
-    {'event_list' : eList}
-    )
-
-  html = tmpl.render(context)
-
-  return HttpResponse(html)
-
-
-
-###########################
-# preview calendar
-###
-
 mnames = "January February March April May June July August September October November December"
 mnames = mnames.split()
 
-def preview_calendar(request, year, month, change=None):
-  """Listing of days in `month`."""
-  year, month = int(year), int(month)
 
-  print year, month, change
+def show_calendar(request, year=None, month=None, change=None):
+  """Listing of days in `month`."""
+  if year == None or month == None:
+    now = datetime.now()
+    year = now.year
+    month = now.month
+    today = now.day
+  else:
+    year, month = int(year), int(month)
+    today = -1
+
+  print year, month, today, change
 
   # apply next / previous change
   if change in ('next', 'prev'):
@@ -106,7 +67,7 @@ def preview_calendar(request, year, month, change=None):
       lst.append([])
       week += 1
 
-  return render_to_response("core/preview_profile.html",
+  return render_to_response("ecal/calendar.html",
                             dict(year=year,
                                  month=month,
                                  user=None,
@@ -116,14 +77,22 @@ def preview_calendar(request, year, month, change=None):
                                                          settings.STATIC_URL)))
 
 
-def preview_calendar_day(request, year, month, day):
+def show_calendar_day(request, year, month, day):
   """Listing of events in 'day'."""
 
   year, month, day = int(year), int(month), int(day)
 
-  entries = Event.objects.filter(datePosted__year=year, datePosted__month=month, datePosted__day=day)
+  entries = Event.objects.filter(datePosted__year=year,
+                                 datePosted__month=month,
+                                 datePosted__day=day)
 
   print len(entries)
 
-  return render_to_response("core/preview_calendar_day.html", dict(year=year, month=month, day=day, user=None, mname=mnames[month-1], event_list=entries))
+  return render_to_response("ecal/calendar_oneday.html",
+                            dict(year=year,
+                                 month=month,
+                                 day=day,
+                                 user=None,
+                                 mname=mnames[month-1],
+                                 event_list=entries))
 

@@ -1,0 +1,109 @@
+
+body {
+  background: url('../img/headerbg.gif') repeat-x;
+  color: #5c5c5c;
+  text-align: center;
+  font-size: 11pt;
+}
+
+.evently .eventlyMainContainer {
+  position: absolute;
+  left: -480px;
+  margin-left: 50%;
+  padding: 0 10px;
+  text-align: left;
+  top: 0;
+  width: 960px;
+}
+
+.evently  .pageTopHeader,
+.evently .pageContent,
+.evently .pageFooter {
+  border: 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.evently  .pageTopHeader {
+  background: url('../img/headerbg.gif') repeat-x;
+  height: 55px;
+  margin-top: 0;
+}
+
+
+.pageTopHeader .logo {
+  width: 178px;
+}
+
+.pageTopHeader .logo img {
+  margin: 8px 6px 0 6px;
+}
+
+.pageTopHeader .navigationBar {
+  height: 20px;
+  width: auto;
+}
+
+.pageTopHeader .navigationBar .navActions {
+  background-color: #ebebeb;
+  height: 20px;
+  margin: 24px 0 0 10px;
+  padding: 5px 0 5px 10px;
+}
+
+.evently .pageContent .mainColumn,
+.evently .pageContent .rightColumn {
+  border: #cccccc solid 1px;
+  width: 700px;
+  padding: 0 10px 10px 10px;
+}
+
+.evently .pageContent .mainColumn div {
+  margin-top: 10px;
+  padding-top: 10px;
+  width: 100%;
+}
+
+.userCalendar .calendarHeader {
+  background-color: #ccedfe;
+  padding-bottom: 5px;
+  width: 100%;
+}
+
+.userCalendar .calendarHeader .monthName {
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.userCalendar .calendarHeader .monthNavLinks {
+  float: right;
+  font-weight: normal;
+  margin-right: 10px;
+}
+
+.userCalendar .calMonthView {
+  width: 95%;
+}
+
+.userCalendar .calMonthView td {
+  vertical-align: top;
+  width: 14%;
+}
+
+.userCalendar .calMonthView td:hover {
+  background-color: #ebebeb;
+}
+
+.evently .pageContent .rightColumn {
+  width: 220px;
+}
+
+.evently .pageFooter  .footerContent {
+  border-top: #5c5c5c solid 1px;
+  margin-top: 10px;
+  padding-top: 10px;
+  text-align: center;
+  width: 100%;
+}

@@ -1,4 +1,7 @@
 from django.conf.urls.defaults import *
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+import settings
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -30,4 +33,22 @@ urlpatterns = patterns('',
     # preview a comments	
     (r'^comments/', include('django.contrib.comments.urls')),
 
+    # home page
+    (r'^profile/', include('home.urls')),
+
+    # calendar
+    (r'^calendar/', include('ecal.urls')),
+    #(r'^calendar/(?P<year>\d+)-(?P<month>\d+)/(?P<change>prev|next)/$',
+    #                 include('ecal.urls')),
+    #(r'^calendar/(?P<year>\d+)-(?P<month>\d+)$', include('ecal.urls')),
+
+    # serve static files
+#    (r'^%s(.*)$' % settings.STATIC_URL, 'django.views.static.serve',
+#       {'document_root': settings.STATIC_ROOT,
+#        'show_indexes' : True}),
+
 )
+
+# serve static files
+urlpatterns += staticfiles_urlpatterns()
+

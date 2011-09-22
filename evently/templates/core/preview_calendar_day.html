@@ -1,0 +1,11 @@
+
+<!-- display a list of event ids below -->
+
+<h4>{{ mname }} {{ day }}, {{ year }}</h4>
+
+{% for entry in event_list %}
+    {{ entry.eventID }}
+    <div class="event">
+        <p>Event: {{ entry.description }}</p>
+    </div>
+{% endfor %}
