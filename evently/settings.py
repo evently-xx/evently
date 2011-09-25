@@ -96,7 +96,7 @@ TEMPLATE_CONTEXT_PROCESSORS = {
   'django.core.context_processors.media',
   'django.core.context_processors.static',
   # add this to make static files work
-#  'staticfiles.context_processors.static_url',
+  #'staticfiles.context_processors.static_url',
 }
 
 MIDDLEWARE_CLASSES = (
@@ -123,6 +123,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
+    'django.contrib.comments',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
