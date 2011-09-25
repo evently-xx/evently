@@ -67,6 +67,8 @@ def show_calendar(request, year=None, month=None, change=None):
       lst.append([])
       week += 1
 
+  event_list = Event.objects.filter(pk__gt = 0)[:3]
+
   return render_to_response("ecal/calendar.html",
                             dict(year=year,
                                  month=month,
@@ -74,7 +76,8 @@ def show_calendar(request, year=None, month=None, change=None):
                                  month_days=lst,
                                  mname=mnames[month-1],
                                  static_url=os.path.join(settings.SITE_URL,
-                                                         settings.STATIC_URL)))
+                                                         settings.STATIC_URL),
+                                 event_list=event_list))
 
 
 def show_calendar_day(request, year, month, day):

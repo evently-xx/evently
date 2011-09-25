@@ -18,12 +18,10 @@ import os
 
 
 def preview_event(request, event_id):
-
-  events = Event.objects.filter(eventID = event_id)
-  if not len(events):
+  try:
+    event = Event.objects.get(pk = event_id)
+  except Event.DoesNotExist:
     raise Http404
-
-  event = events[0]
 
   # fill in all fields of an event
   context = RequestContext(

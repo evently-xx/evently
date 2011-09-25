@@ -11,3 +11,7 @@ urlpatterns = patterns(
   (r'^(?P<year>\d+)-(?P<month>\d+)$', 'show_calendar'),
   (r'^(?P<year>\d+)-(?P<month>\d+)-(?P<day>\d+)$', 'show_calendar_day'),
 )
+
+urlpatterns += patterns('',
+  (r'^(?P<event_id>\d+)$', 'core.views.preview_event'),
+) 
