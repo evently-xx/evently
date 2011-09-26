@@ -131,7 +131,7 @@ def preview_calendar_day(request, year, month, day):
 
 def render_event_unit(event):
 
-  tmpl = get_template("core/ui/event_unit.html")
+  tmpl = get_template("ui/event_unit.html")
   c = Context({'event' : event});
 
   return tmpl.render(c);

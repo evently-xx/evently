@@ -9,7 +9,8 @@ from django.shortcuts import render_to_response
 import sys
 
 from core.models import Event
-from core.views import * 
+from ui.event_unit import *
+from event.views import * 
 
 import time
 from datetime import date, datetime, timedelta
@@ -58,7 +59,7 @@ def show_calendar(request, year=None, month=None, change=None):
     entries = current = False   # are there entries for this day; current day?
     if day:
       #entries = Entry.objects.filter(date__year=year, date__month=month, date__day=day)
-      entries = Event.objects.filter(datePosted__year=year, datePosted__month=month, datePosted__day=day, eventID__exact=-111)
+      entries = Event.objects.filter(datePosted__year=year, datePosted__month=month, datePosted__day=day)
       if day == nday and year == nyear and month == nmonth:
         current = True
 
@@ -91,11 +92,15 @@ def show_calendar_day(request, year, month, day):
 
   print len(entries)
 
+  content = []
+  for entry in entries:
+    content.append(ui_render_event_unit(entry))
+
   return render_to_response("ecal/calendar_oneday.html",
                             dict(year=year,
                                  month=month,
                                  day=day,
                                  user=None,
                                  mname=mnames[month-1],
-                                 event_list=entries))
+                                 content=content))
 
