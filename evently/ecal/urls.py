@@ -1,7 +1,12 @@
+#sys.path.append('../')
+
 from django.conf.urls.defaults import *
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+
+#from evently import urls
+
 admin.autodiscover()
 
 urlpatterns = patterns(
@@ -12,6 +17,6 @@ urlpatterns = patterns(
   (r'^(?P<year>\d+)-(?P<month>\d+)-(?P<day>\d+)$', 'show_calendar_day'),
 )
 
-urlpatterns += patterns('',
-  (r'^(?P<event_id>\d+)$', 'core.views.preview_event'),
-) 
+#urlpatterns += patterns('',
+#  (r'^(?P<event_id>\d+)$', 'core.views.preview_event'),
+#) 

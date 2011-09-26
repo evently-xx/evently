@@ -29,6 +29,9 @@ urlpatterns = patterns('',
     # home page
     (r'^profile/', include('home.urls')),
 
+    # Event page
+    (r'^event/', include('event.urls')),
+
     # calendar
     (r'^calendar/', include('ecal.urls')),
     #(r'^calendar/(?P<year>\d+)-(?P<month>\d+)/(?P<change>prev|next)/$',

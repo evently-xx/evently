@@ -73,7 +73,7 @@
               {% for event in event_list %}
                 <tr>
                   <td class="eventRecCell" 
-                    onClick="parent.location='../preview/event/{{event.eventID}}'">
+                    onClick="parent.location='{% url core.views.preview_event event.eventID %}'">
                     {{event.eventID}}<br />
                     {{event.name}}<br />
                   </td>  
