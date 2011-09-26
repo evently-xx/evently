@@ -1,8 +1,21 @@
 
 <!-- display a list of event ids below -->
+<html>
 
-<h4>{{ mname }} {{ day }}, {{ year }}</h4>
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ static_url }}css/main.css">
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ static_url }}css/ui_event_unit.css">
+  <title>Evently - {{ mname }} {{ day }}, {{ year }}</title>
+</head>
 
-{% for unit in content %}
-  {{ unit }}
-{% endfor %}
+<body>
+  <h4 class="pageTitle">{{ mname }} {{ day }}, {{ year }}</h4>
+
+  {% for unit in content %}
+    {{ unit }}
+  {% endfor %}
+</body>
+</html>

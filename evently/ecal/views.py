@@ -70,15 +70,24 @@ def show_calendar(request, year=None, month=None, change=None):
 
   event_list = Event.objects.filter(pk__gt = 0)[:3]
 
-  return render_to_response("ecal/calendar.html",
-                            dict(year=year,
-                                 month=month,
-                                 user=None,
-                                 month_days=lst,
-                                 mname=mnames[month-1],
-                                 static_url=os.path.join(settings.SITE_URL,
-                                                         settings.STATIC_URL),
-                                 event_list=event_list))
+  return render_to_response(
+    "ecal/calendar.html",
+    dict(year=year,
+         month=month,
+         user=None,
+         month_days=lst,
+         mname=mnames[month-1],
+         static_url=os.path.join(settings.SITE_URL, settings.STATIC_URL),
+         rec_events=show_recommended_events(event_list))
+  )
+
+# render a list of recommended events
+def show_recommended_events(event_list):
+  rec = []
+  for event in event_list:
+    rec.append(ui_render_event_unit(event))
+
+  return rec
 
 
 def show_calendar_day(request, year, month, day):
@@ -102,5 +111,7 @@ def show_calendar_day(request, year, month, day):
                                  day=day,
                                  user=None,
                                  mname=mnames[month-1],
+                                 static_url=os.path.join(settings.SITE_URL,
+                                                         settings.STATIC_URL),
                                  content=content))
 

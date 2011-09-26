@@ -2,6 +2,10 @@
 
   <HEAD>
     <link rel="stylesheet" type="text/css" href="{{ static_url }}css/main.css">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ static_url }}css/ui_event_unit.css">
     <TITLE>Evently</TITLE>
   </HEAD>
 
@@ -18,11 +22,11 @@
       <table class="pageContent">
         <tr>
           <td class="mainColumn">
-            <div id="profileInfo">
+            <div id="profileInfo" class="mainColumnDiv">
               PH:Profile
             </div>
-            <div id="invitations"> PH:Invitations </div>
-            <div id="userCalendar" class="userCalendar">
+            <div id="invitations" class="mainColumnDiv"> PH:Invitations </div>
+            <div id="userCalendar" class="userCalendar mainColumnDiv">
               <div class="calendarHeader">
                 <span class="monthName">{{ mname }} {{ year }}</span>
                 <span class="monthNavLinks">
@@ -53,12 +57,12 @@
 
                           <!-- Day number and entry snippets -->
                           {% if day != 0 %}
-                            {{ day }}
-                            {% for entry in entries %}
-                              <br />
-                              <b>{{ entry.eventID }}</b>:
-                               {{ entry.description|safe }}
-                            {% endfor %}
+                            <div class="dayOfMonth">{{ day }}</div>
+                            {% if entries %}
+                              <div class="numEventCount">
+                                {{ entries|length }} events today.
+                              </div>
+                            {% endif %}
                           {% endif %}
                         </td>
                       {% endfor %}
@@ -69,15 +73,9 @@
             </div>
           </td>
           <td class="rightColumn">
-            <table>
-              {% for event in event_list %}
-                <tr>
-                  <td class="eventRecCell" 
-                    onClick="parent.location='{% url event.views.preview_event event.eventID %}'">
-                    {{event.eventID}}<br />
-                    {{event.name}}<br />
-                  </td>  
-                </tr>
+            <div class="eventsRecommendations">
+              {% for event in rec_events %}
+                {{ event }}
               {% endfor %}
             </table>
           </td>

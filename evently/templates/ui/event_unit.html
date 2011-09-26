@@ -1,7 +1,18 @@
 <div>
-  <div><b>{{ event.eventID }}</b></div>
-  <div>{{ event.name }}</div>
-  <div>{{ event.utcStart }}</div>
-  <div>{{ event.utcEnd }}</div>
-  <div>{{ event.description }}</div>
+  <table class="UIImageBlock">
+    <tr>
+      <td class="imageBlockPic">
+        <img src="{{ static_url }}img/event.gif" class="squarePicMedium">
+      </td>
+      <td class="imageBlockContent">
+        <div class="imageBlockTitle">{{ event.name|truncatewords:8 }}</div>
+        <div class="imageBlockSubtitle">
+          {{ event.utcStart }} - {{ event.utcEnd }}
+        </div>
+        <div class="imageBlockBody">
+          {{ event.description|truncatewords:25 }}
+        </div>
+     </td>
+    </tr>
+  </table>
 </div>

@@ -1,9 +1,20 @@
 
 body {
   background: url('../img/headerbg.gif') repeat-x;
-  color: #5c5c5c;
+  color: #4c4c4c;
+  font-family: Segoe UI, Tahoma, Arial, Verdana;
+  font-size: 12px;
   text-align: center;
-  font-size: 11pt;
+}
+
+table {
+  font-size: 12px;
+}
+
+.pageTitle {
+  color: #333333;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .evently .eventlyMainContainer {
@@ -16,7 +27,7 @@ body {
   width: 960px;
 }
 
-.evently  .pageTopHeader,
+.evently .pageTopHeader,
 .evently .pageContent,
 .evently .pageFooter {
   border: 0;
@@ -56,11 +67,12 @@ body {
 .evently .pageContent .mainColumn,
 .evently .pageContent .rightColumn {
   border: #cccccc solid 1px;
-  width: 700px;
   padding: 0 10px 10px 10px;
+  vertical-align: top;
+  width: 700px;
 }
 
-.evently .pageContent .mainColumn div {
+.evently .pageContent .mainColumn .mainColumnDiv {
   margin-top: 10px;
   padding-top: 10px;
   width: 100%;
@@ -88,6 +100,7 @@ body {
 }
 
 .userCalendar .calMonthView td {
+  height: 60px;
   vertical-align: top;
   width: 14%;
 }
@@ -96,12 +109,17 @@ body {
   background-color: #ebebeb;
 }
 
+.userCalendar .calMonthView .numEventCount {
+  margin-top: 3px;
+}
+
 .evently .pageContent .rightColumn {
   width: 220px;
+  padding-top: 10px;
 }
 
 .evently .pageFooter  .footerContent {
-  border-top: #5c5c5c solid 1px;
+  border-top: #4c4c4c solid 1px;
   margin-top: 10px;
   padding-top: 10px;
   text-align: center;
