@@ -10,6 +10,7 @@ import sys
 
 from core.models import Event
 from ui.event_unit import *
+from event.views import * 
 
 import time
 from datetime import date, datetime, timedelta
@@ -17,7 +18,6 @@ import calendar
 
 import settings
 import os
-
 
 mnames = "January February March April May June July August September October November December"
 mnames = mnames.split()

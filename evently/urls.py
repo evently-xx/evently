@@ -12,10 +12,10 @@ urlpatterns = patterns('',
     # (r'^evently/', include('evently.foo.urls')),
 
     # get list of objects
-    (r'^preview/event/$', 'core.views.preview_event_list'),
+    #(r'^preview/event/$', 'core.views.preview_event_list'),
 
     # preview an object
-    (r'^preview/event/(?P<event_id>\d+)$', 'core.views.preview_event'),
+    #(r'^preview/event/(?P<event_id>\d+)$', 'core.views.preview_event'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -28,6 +28,9 @@ urlpatterns = patterns('',
 
     # home page
     (r'^profile/', include('home.urls')),
+
+    # Event page
+    (r'^event/', include('event.urls')),
 
     # calendar
     (r'^calendar/', include('ecal.urls')),
