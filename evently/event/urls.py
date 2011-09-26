@@ -10,7 +10,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns(
-  'core.views',        # the library to load functions 
+  'event.views',        # the library to load functions 
   # get list of objects
   (r'^$', 'preview_event_list'),
   # preview an object

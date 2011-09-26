@@ -9,7 +9,7 @@ from django.shortcuts import render_to_response
 import sys
 
 from core.models import Event
-from core.views import * 
+from event.views import * 
 
 import time
 from datetime import date, datetime, timedelta
