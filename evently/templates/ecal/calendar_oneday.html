@@ -3,9 +3,6 @@
 
 <h4>{{ mname }} {{ day }}, {{ year }}</h4>
 
-{% for entry in event_list %}
-    {{ entry.eventID }}
-    <div class="event">
-        <p>Event: {{ entry.description }}</p>
-    </div>
+{% for unit in content %}
+  {{ unit }}
 {% endfor %}
