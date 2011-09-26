@@ -1,0 +1,34 @@
+.UIImageBlock table {
+  border: transparent 0 solid;
+  max-width: 320px;
+  width: 100%;
+}
+
+.UIImageBlock .imageBlockPic {
+  vertical-align: top;
+  width: 50px;
+}
+
+.UIImageBlock .imageBlockPic img {
+  height: 50px;
+  width: 50px;
+}
+
+.UIImageBlock .imageBlockContent {
+  width: 260px;
+}
+
+.UIImageBlock .imageBlockContent .imageBlockTitle,
+.UIImageBlock .imageBlockContent .imageBlockSubtitle,
+.UIImageBlock .imageBlockContent .imageBlockBody {
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+.UIImageBlock .imageBlockContent .imageBlockTitle {
+  font-weight: bold;
+}
+
+.UIImageBlock .imageBlockContent .imageBlockSubtitle {
+  color: gray;
+}
