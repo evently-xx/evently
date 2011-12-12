@@ -7,6 +7,7 @@ models for meet4fun, an light-weighted event organzier.
 __author__ = 'xliu'
 
 from django.db import models
+#from django.contrib.localflavor.us.forms.USPhoneNumberField
 from django.contrib.auth.models import User
 
 VISIBILITY = (
@@ -34,7 +35,7 @@ class UserProfile(models.Model):
   # one row in userprofile table corresponds to one user
   user = models.OneToOneField(User)
   # additional information should go from here.
-  phone  = models.PhoneNumberField()
+  phone = models.CharField(null=True, blank=True, max_length = 16)
 
 class Venue(models.Model):
   name = models.CharField(null=True, blank=True, max_length = 256)
@@ -47,7 +48,7 @@ class Venue(models.Model):
   zip = models.IntegerField(null=True, blank=True, db_index = True)
   lon = models.FloatField(null=True, db_index = True)
   lat = models.FloatField(null=True, db_index = True)
-  phone = models.CharField(null=True, blank=True, max_length = 64)
+  phone = models.CharField(null=True, blank=True, max_length = 16)
 
 class Event(models.Model):
   time = models.DateTimeField(null = True, blank = True, db_index=True)
@@ -73,4 +74,3 @@ class Rsvp(models.Model):
       choices=RSVP_RESPONSE)
   created = models.DateTimeField(null = True, blank = True)
   updated = models.DateTimeField(null = True, blank = True)
-  objects = RsvpManager() 
