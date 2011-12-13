@@ -1,0 +1,51 @@
+<HTML>
+
+  <HEAD>
+    <link rel="stylesheet" type="text/css" href="{{ static_url }}css/main.css">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ static_url }}css/ui_event_unit.css">
+    <TITLE>Evently</TITLE>
+  </HEAD>
+
+  <BODY class="evently">
+    <div id="mainContainer" class="eventlyMainContainer">
+      <table class="pageTopHeader">
+        <tr>
+          <td class="logo"><img src="{{ static_url }}img/logo.gif"></td>
+          <td class="navigationBar">
+            <div class="navActions"> PH:Navigation bar </div>
+          </td>
+        </tr>
+      </table>
+      <table class="pageContent">
+        <tr>
+          <td class="mainColumn">
+            <!-- To see why form is defined this way. https://docs.djangoproject.com/en/dev/topics/forms/ -->
+            <form action="/event/create" method="post">{% csrf_token %}
+              {{ form.non_field_errors }}
+              {% for field in form %}
+                  <div class="fieldWrapper">
+                      {{ field.errors }}
+                      {{ field.label_tag }}: {{ field }}
+                  </div>
+              {% endfor %}
+              <p><input type="submit" value="Create" /></p>
+          </form>
+          </td>
+          <td class="rightColumn">
+          </td>
+        </tr>
+      </table>
+      <table class="pageFooter">
+        <tr>
+          <td class="footerContent">
+            Copyright 2011-present Evently. All Rights Reserved.
+          </td>
+        </tr>
+      </table>
+    </div>
+  </BODY>
+
+</HTML>
