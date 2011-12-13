@@ -8,6 +8,7 @@ d = Ding Zhou
 j = Jiang Bian
 
 x x - Create Event page.
+x - - Need to learn how to do login/logout using sessino control.
 x - - Lookup/Create users and venues in create event page. 
 x - - Handle datatime/phone etc fields with correct validation. 
 x - - Send Emails.
