@@ -1,0 +1,17 @@
+Please use this file to track todo tasks and accept/create new tasks.
+
+Format: created by? owned by? Done by? Description
+x = ingjie Liu
+y = Yuan Tian
+q = Qi He
+d = Ding Zhou
+j = Jiang Bian
+
+x x - Create Event page.
+x - - Lookup/Create users and venues in create event page. 
+x - - Handle datatime/phone etc fields with correct validation. 
+x - - Send Emails.
+x - - Modify Event page.
+x - - CSS and cosmetic of create event page.
+... Append this list on and on...
+ 
