@@ -12,8 +12,10 @@ admin.autodiscover()
 urlpatterns = patterns(
   'event.views',        # the library to load functions 
   # get list of objects
-  (r'^$', 'preview_event_list'),
+  (r'^$', 'preview_list'),
   # preview an object
-  (r'^(?P<event_id>\d+)$', 'preview_event'),
+  (r'^(?P<event_id>\d+)$', 'preview'),
+  # create an event
+  (r'^create$', 'create'),
 )
 

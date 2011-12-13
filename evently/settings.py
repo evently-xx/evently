@@ -131,5 +131,5 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     #'core',
     'home',
-    'meet4fun'
+    'event'
 )

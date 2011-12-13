@@ -30,6 +30,9 @@ urlpatterns = patterns('',
     (r'^profile/', include('home.urls')),
 
     # Event page
+    #(r'^event/', include('event.urls')),
+    
+    # Meet4fun page
     (r'^event/', include('event.urls')),
 
     # calendar
